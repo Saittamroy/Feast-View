@@ -1,5 +1,6 @@
 import { Facebook, Instagram, Twitter, MapPin, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "wouter";
 
 export function Footer() {
   return (
@@ -29,11 +30,12 @@ export function Footer() {
           <div className="space-y-4">
             <h4 className="font-heading text-lg font-semibold">Quick Links</h4>
             <ul className="space-y-2 text-sm text-background/80">
-              <li><a href="#" className="hover:text-primary transition-colors">Home</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Our Menu</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Reservation</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Blog</a></li>
+              <li><Link href="/"><a className="hover:text-primary transition-colors">Home</a></Link></li>
+              <li><Link href="/menu"><a className="hover:text-primary transition-colors">Our Menu</a></Link></li>
+              <li><Link href="/about"><a className="hover:text-primary transition-colors">About Us</a></Link></li>
+              <li><Link href="/contact"><a className="hover:text-primary transition-colors">Reservation</a></Link></li>
+              <li><Link href="/blog"><a className="hover:text-primary transition-colors">Blog</a></Link></li>
+              <li><Link href="/policy"><a className="hover:text-primary transition-colors">Return Policy</a></Link></li>
             </ul>
           </div>
 

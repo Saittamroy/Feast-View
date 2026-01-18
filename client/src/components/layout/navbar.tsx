@@ -1,9 +1,13 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Search, ShoppingBag, Menu, User } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export function Navbar() {
+  const [location] = useLocation();
+
+  const isActive = (path: string) => location === path;
+
   return (
     <nav className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-border/50">
       <div className="container mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
@@ -16,10 +20,19 @@ export function Navbar() {
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
-          <a href="#" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">Menu</a>
-          <a href="#" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">About</a>
-          <a href="#" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">Locations</a>
-          <a href="#" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">Contact</a>
+          {[
+            { name: "Home", path: "/" },
+            { name: "Menu", path: "/menu" },
+            { name: "About", path: "/about" },
+            { name: "Blog", path: "/blog" },
+            { name: "Contact", path: "/contact" }
+          ].map((link) => (
+            <Link key={link.name} href={link.path}>
+              <a className={`text-sm font-medium transition-colors ${isActive(link.path) ? "text-primary font-bold" : "text-foreground/80 hover:text-primary"}`}>
+                {link.name}
+              </a>
+            </Link>
+          ))}
         </div>
 
         {/* Actions */}
@@ -44,10 +57,17 @@ export function Navbar() {
             </SheetTrigger>
             <SheetContent>
               <div className="flex flex-col gap-6 mt-10">
-                <a href="#" className="text-lg font-medium">Menu</a>
-                <a href="#" className="text-lg font-medium">About</a>
-                <a href="#" className="text-lg font-medium">Locations</a>
-                <a href="#" className="text-lg font-medium">Contact</a>
+                {[
+                  { name: "Home", path: "/" },
+                  { name: "Our Menu", path: "/menu" },
+                  { name: "About Us", path: "/about" },
+                  { name: "Blog", path: "/blog" },
+                  { name: "Contact", path: "/contact" }
+                ].map((link) => (
+                  <Link key={link.name} href={link.path}>
+                    <a className="text-lg font-medium hover:text-primary transition-colors">{link.name}</a>
+                  </Link>
+                ))}
                 <div className="h-px bg-border my-2"></div>
                 <a href="#" className="text-lg font-medium">Login</a>
                 <a href="#" className="text-lg font-medium">My Orders</a>
