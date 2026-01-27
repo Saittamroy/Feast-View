@@ -1,11 +1,14 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Star, Clock, Flame } from "lucide-react";
+import { ArrowRight, Star, Clock, Flame, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { heroDish } from "@/lib/dummy-data";
 import { Rating } from "@/components/ui/rating";
+import { getWhatsAppLink, createOrderMessage } from "@/lib/whatsapp";
 
 export function Hero() {
+  const whatsappLink = getWhatsAppLink(createOrderMessage(heroDish.name, heroDish.price));
+
   return (
     <section className="relative w-full min-h-[600px] lg:h-[80vh] bg-secondary/30 flex items-center py-12 lg:py-0 overflow-hidden">
       {/* Decorative background elements */}
@@ -55,9 +58,11 @@ export function Hero() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button size="lg" className="rounded-full h-14 px-8 text-base shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-1 transition-all">
-                Order Now <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
+              <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                <Button size="lg" className="rounded-full h-14 px-8 text-base shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-1 transition-all bg-[#25D366] hover:bg-[#128C7E] text-white border-transparent">
+                  Order on WhatsApp <MessageCircle className="ml-2 w-5 h-5" />
+                </Button>
+              </a>
               <Button size="lg" variant="outline" className="rounded-full h-14 px-8 text-base bg-white/50 border-primary/20 hover:bg-white hover:text-primary">
                 View Full Menu
               </Button>

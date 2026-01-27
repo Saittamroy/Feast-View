@@ -5,9 +5,10 @@ import { Footer } from "@/components/layout/footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Rating } from "@/components/ui/rating";
-import { Flame, Clock, Leaf, ArrowLeft, Plus, Minus, Heart } from "lucide-react";
+import { Flame, Clock, Leaf, ArrowLeft, Plus, Minus, Heart, MessageCircle } from "lucide-react";
 import { useState } from "react";
 import NotFound from "@/pages/not-found";
+import { getWhatsAppLink, createOrderMessage } from "@/lib/whatsapp";
 
 export default function DishDetails() {
   const [match, params] = useRoute("/menu/:id");
@@ -19,6 +20,8 @@ export default function DishDetails() {
   const item = allItems.find(i => i.id === params.id);
 
   if (!item) return <NotFound />;
+
+  const whatsappLink = getWhatsAppLink(createOrderMessage(item.name, item.price, quantity));
 
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans">
@@ -127,9 +130,11 @@ export default function DishDetails() {
               </div>
 
               <div className="flex gap-4">
-                <Button size="lg" className="flex-1 h-14 text-lg rounded-xl shadow-lg shadow-primary/20">
-                  Add to Order - ${(item.price * quantity).toFixed(2)}
-                </Button>
+                <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="flex-1">
+                  <Button size="lg" className="w-full h-14 text-lg rounded-xl shadow-lg shadow-primary/20 bg-[#25D366] hover:bg-[#128C7E] text-white">
+                    Order on WhatsApp - ${(item.price * quantity).toFixed(2)} <MessageCircle className="ml-2 w-5 h-5" />
+                  </Button>
+                </a>
               </div>
             </div>
           </div>

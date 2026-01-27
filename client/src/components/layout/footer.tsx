@@ -9,7 +9,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="space-y-4">
-            <h3 className="font-heading text-2xl font-bold text-primary">Saffron&Spice</h3>
+            <h3 className="font-heading text-2xl font-bold text-primary">FoodOption</h3>
             <p className="text-background/80 text-sm leading-relaxed">
               Authentic Indian cuisine prepared with traditional recipes and love. Experience the royal flavors of India.
             </p>
@@ -75,7 +75,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-8 text-center text-sm text-background/60">
-          <p>© 2024 Saffron & Spice. All rights reserved. Designed for Food Lovers.</p>
+          <p>© 2026 Food Option. All rights reserved. Designed for Food Lovers.</p>
         </div>
       </div>
     </footer>

@@ -1,16 +1,19 @@
 import { motion } from "framer-motion";
-import { Plus, Heart, Clock, Flame } from "lucide-react";
+import { Plus, Heart, Clock, Flame, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Rating } from "@/components/ui/rating";
 import { MenuItem } from "@/lib/dummy-data";
 import { Link } from "wouter";
+import { getWhatsAppLink, createOrderMessage } from "@/lib/whatsapp";
 
 interface MenuCardProps {
   item: MenuItem;
 }
 
 export function MenuCard({ item }: MenuCardProps) {
+  const whatsappLink = getWhatsAppLink(createOrderMessage(item.name, item.price));
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -73,9 +76,11 @@ export function MenuCard({ item }: MenuCardProps) {
               <span className="text-sm text-muted-foreground line-through">${item.originalPrice}</span>
             )}
           </div>
-          <Button size="sm" className="rounded-full px-4 gap-1 hover:scale-105 transition-transform">
-            Add <Plus className="w-4 h-4" />
-          </Button>
+          <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+            <Button size="sm" className="rounded-full px-4 gap-1 hover:scale-105 transition-transform bg-[#25D366] hover:bg-[#128C7E] text-white">
+              Order <MessageCircle className="w-4 h-4" />
+            </Button>
+          </a>
         </div>
       </div>
     </motion.div>

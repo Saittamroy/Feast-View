@@ -11,6 +11,7 @@ import Contact from "@/pages/contact";
 import Blog from "@/pages/blog";
 import Policy from "@/pages/policy";
 import DishDetails from "@/pages/dish-details";
+import { FloatingWhatsApp } from "@/components/floating-whatsapp";
 
 function Router() {
   return (
@@ -33,6 +34,7 @@ function App() {
       <TooltipProvider>
         <Toaster />
         <Router />
+        <FloatingWhatsApp />
       </TooltipProvider>
     </QueryClientProvider>
   );

@@ -14,7 +14,7 @@ export function Navbar() {
         {/* Logo */}
         <Link href="/">
           <a className="flex items-center gap-2">
-            <span className="font-heading text-2xl font-bold text-primary">Saffron<span className="text-foreground">&</span>Spice</span>
+            <span className="font-heading text-2xl font-bold text-primary">Food<span className="text-foreground">Option</span></span>
           </a>
         </Link>
 
