@@ -1,4 +1,4 @@
-import heroImg from '@assets/generated_images/hyderabadi_chicken_biryani_in_clay_pot.png';
+import heroImg from '@assets/generated_images/biriyani.webp';
 import paneerImg from '@assets/generated_images/paneer_tikka_masala_in_copper_bowl.png';
 import chickenImg from '@assets/generated_images/tandoori_chicken_platter.png';
 import riceImg from '@assets/generated_images/jeera_rice_bowl.png';
